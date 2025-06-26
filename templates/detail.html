@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ ipo.company_name }} - IPO Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+
+    <a href="{% url 'ipo_list' %}" class="btn btn-secondary mb-3">&larr; Back to List</a>
+
+    <div class="card shadow-sm p-4">
+        <img src="{{ ipo.logo.url }}" alt="{{ ipo.company_name }}" class="mb-3" style="max-height: 200px;">
+        <h2 class="mb-3">{{ ipo.company_name }}</h2>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Status:</strong> {{ ipo.status }}</li>
+            <li class="list-group-item"><strong>Price Band:</strong> {{ ipo.price_band }}</li>
+            <li class="list-group-item"><strong>Open Date:</strong> {{ ipo.open_date }}</li>
+            <li class="list-group-item"><strong>Close Date:</strong> {{ ipo.close_date }}</li>
+            <li class="list-group-item"><strong>Issue Size:</strong> {{ ipo.issue_size }}</li>
+            <li class="list-group-item"><strong>Issue Type:</strong> {{ ipo.issue_type }}</li>
+            <li class="list-group-item"><strong>Listing Date:</strong> {{ ipo.listing_date }}</li>
+            <li class="list-group-item"><strong>IPO Price:</strong> ₹{{ ipo.ipo_price }}</li>
+            <li class="list-group-item"><strong>Listing Price:</strong> ₹{{ ipo.listing_price }}</li>
+        </ul>
+
+        {% if ipo.rhp_pdf %}
+        <a href="{{ ipo.rhp_pdf.url }}" class="btn btn-primary mt-3" target="_blank">Download RHP PDF</a>
+        {% endif %}
+    </div>
+
+</div>
+</body>
+</html>
